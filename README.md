@@ -1,3 +1,4 @@
+
 # SkillCrucial React Redux boilerplate
 
 ## Quick start
@@ -148,3 +149,5 @@ docker-compose -f .\docker\DEV.docker-compose.yml up (Options: --build for build
 docker-compose -f .\docker\DEV.docker-compose.yml down (To stop contaiters)
 ```
 # DoskiShop
+=======
+123
