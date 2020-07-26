@@ -46,7 +46,7 @@ const Header = () => {
                 })}
               </div>
             </div>
-            <div className="flex text-lg text-black flex-row md:hidden">
+            <div className="flex text-lg text-black flex-row ">
               {['EUR', 'CAD', 'USD'].map((it) => {
                 return (
                   <button

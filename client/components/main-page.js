@@ -16,7 +16,7 @@ const Main = () => {
       {switchSortItems(sortStatus, items).map((it) => {
         return (
           <div key={it.id} className="flex flex-col  px-4 py-4 ">
-            <div className="flex flex-col box-content bg-white  w-64 h-64 border border-gray-300 border-opacity-25 rounded">
+            <div className="flex flex-col box-content bg-white  w-64 h-64 border border-gray-300 border-opacity-25 rounded shadow">
               <img
                 id="card__image"
                 alt="img"
@@ -35,7 +35,7 @@ const Main = () => {
                 {typeof cart !== 'undefined' ? cart[it.id] : ''}
                 <button
                   type="button"
-                  className="border-2 font-bold border-solid border-gray-700 bg-gray-400 px-2 rounded-lg"
+                  className="border-2 font-bold hover:text-black hover:bg-gray-700 border-solid border-gray-700 bg-gray-400 focus:outline-none px-2 rounded-lg"
                   onClick={() => dispatch(addToCart(it.id))}
                 >
                   купить
