@@ -68,6 +68,13 @@ server.get('/api/v1/database', async (req, res) => {
   res.json(dataBase.slice(0, 24))
 })
 
+server.get('/api/v1/databaseWheels', async (req, res) => {
+  const dataBase = await readFile(`${__dirname}/data.json`, { encoding: 'utf8' }).then((data) =>
+    JSON.parse(data)
+  )
+  res.json(dataBase.slice(25, 49))
+})
+
 server.get('/api/v1/logs', async (req, res) => {
   const logs = await readFile(`${__dirname}/logs.json`, { encoding: 'utf8' }).then((data) =>
     JSON.parse(data)

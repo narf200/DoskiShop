@@ -7,6 +7,8 @@ import Header from './header'
 import Main from './main-page'
 import Basket from './basket-page'
 import Logs from './logs-page'
+import ItemBar from './items-bar'
+import Wheels from './wheels-page'
 
 const Home = () => {
   const dispatch = useDispatch()
@@ -22,6 +24,8 @@ const Home = () => {
       <Header />
       <Switch>
         <Route exact path="/" component={() => <Main />} />
+        <Route exact path="/item-bar" component={() => <ItemBar />} />
+        <Route exact path="/wheels-page" component={() => <Wheels />} />
         <Route exact path="/basket" component={() => <Basket />} />
         <Route exact path="/logs" component={() => <Logs />} />
       </Switch>

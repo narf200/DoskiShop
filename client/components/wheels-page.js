@@ -1,9 +1,9 @@
 import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { addToCart, switchPrice, switchSortItems } from '../redux/reducers/infobase'
+import { addToCart, removeFromCart, switchPrice, switchSortItems } from '../redux/reducers/infobase'
 
-const Main = () => {
-  const items = useSelector((store) => store.infobase.items)
+const Wheels = () => {
+  const itemsWheels = useSelector((store) => store.infobase.itemsWheels)
   const currency = useSelector((store) => store.infobase.currency)
   const exchangeRate = useSelector((store) => store.infobase.exchangeRate)
   const sortStatus = useSelector((store) => store.infobase.sortStatus)
@@ -12,11 +12,11 @@ const Main = () => {
   const dispatch = useDispatch()
 
   return (
-    <div className="flex flex-row flex-wrap bg-white  content-around justify-around ">
-      {switchSortItems(sortStatus, items).map((it) => {
+    <div className="flex flex-row flex-wrap bg-gray-200  content-around justify-around">
+      {switchSortItems(sortStatus, itemsWheels).map((it) => {
         return (
-          <div key={it.id} className="flex flex-col  px-4 py-4 ">
-            <div className="flex flex-col box-content bg-white  w-64 h-64 border border-gray-300 border-opacity-25 rounded">
+          <div key={it.id} className="flex flex-col  px-4 py-4">
+            <div className="flex flex-col box-content bg-white  w-64 h-64 border-2 border-gray-400 rounded">
               <img
                 id="card__image"
                 alt="img"
@@ -31,14 +31,23 @@ const Main = () => {
                   {switchPrice(currency, it.price, exchangeRate)}
                 </div>
               </div>
-              <div className="flex flex-row justify-between px-24">
+              <div className="flex flex-row justify-between px-16">
+                <button
+                  type="button"
+                  className="border-2 font-bold border-solid border-gray-700 bg-gray-400 px-2"
+                  onClick={() =>
+                    cart[it.id] !== undefined ? dispatch(removeFromCart(it.id)) : null
+                  }
+                >
+                  -
+                </button>
                 {typeof cart !== 'undefined' ? cart[it.id] : ''}
                 <button
                   type="button"
-                  className="border-2 font-bold border-solid border-gray-700 bg-gray-400 px-2 rounded-lg"
+                  className="border-2 font-bold border-solid border-gray-700 bg-gray-400 px-2"
                   onClick={() => dispatch(addToCart(it.id))}
                 >
-                  купить
+                  +
                 </button>
               </div>
             </div>
@@ -49,6 +58,6 @@ const Main = () => {
   )
 }
 
-Main.propTypes = {}
+Wheels.propTypes = {}
 
-export default Main
+export default Wheels

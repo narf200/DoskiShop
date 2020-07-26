@@ -72,6 +72,8 @@ const RootComponent = (props) => {
         <Startup>
           <Switch>
             <Route exact path="/" component={() => <Home />} />
+            <Route exact path="/item-bar" component={() => <Home />} />
+            <Route exact path="/wheels-page" component={() => <Home />} />
             <Route exact path="/basket" component={() => <Home />} />
             <Route exact path="/logs" component={() => <Home />} />
             <Route component={() => <NotFound />} />

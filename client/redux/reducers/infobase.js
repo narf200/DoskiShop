@@ -2,6 +2,7 @@ import axios from 'axios'
 
 const CHANGE_CURRENCY = 'CHANGE_CURRENCY'
 const DATA_BASE = '@@DATA_BASE'
+const DATA_BASE_WHEELS = '@@DATA_BASE_WHEELS'
 const EXCHANGE_RATE = '@@EXCHANGE_RATE'
 const ADD_TO_CART = 'ADD_TO_CART'
 const REMOVE_FROM_CART = 'REMOVE_FROM_CART'
@@ -10,6 +11,7 @@ const SET_SORT = 'SET_SORT'
 const initialState = {
   currency: 'EUR',
   items: [],
+  itemsWheels: [],
   exchangeRate: {},
   cart: {},
   sortStatus: ''
@@ -21,6 +23,11 @@ export default (state = initialState, action) => {
       return {
         ...state,
         currency: action.currency
+      }
+    case DATA_BASE_WHEELS:
+      return {
+        ...state,
+        itemsWheels: action.itemsWheels
       }
     case DATA_BASE:
       return {
@@ -76,6 +83,16 @@ export function setSortStatus(sortStatus) {
 export function getItems() {
   return function f(dispatch) {
     axios('/api/v1/database').then(({ data }) => {
+      dispatch({ type: DATA_BASE, items: data })
+    })
+  }
+}
+
+// функция для колёс
+
+export function getItemsWheels() {
+  return function f(dispatch) {
+    axios('/api/v1/databaseWheels').then(({ data }) => {
       dispatch({ type: DATA_BASE, items: data })
     })
   }
